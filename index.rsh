@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 'reach 0.1';
 
 const commonInteract = {
@@ -8,33 +10,37 @@ const commonInteract = {
 
 const traderInteract = {
   ...commonInteract,
-  price: UInt,
-  property: Bytes(128),
-  reportReady: Fun([UInt], Null),
+  getPropertyInfo: Fun([], Object({
+    property: Bytes(128),
+    price: UInt,
+  })),
+  reportReady: Fun([Bytes(128), UInt], Null),
 };
 
 
 const offTakerInteract = {
   ...commonInteract,
-  reportproperty: Fun([Bytes(128)], Null),
-  confirmPurchase: Fun([UInt], Bool),
+  reportProperty: Fun([Bytes(128)], Null),
+  confirmPurchase: Fun([Bytes(128), UInt], Bool),
 };
 
 
 export const main = Reach.App(() => {
 
-  const S = Participant('trader', traderInteract);
-  const B = Participant('offTaker', offTakerInteract);
+  const S = Participant('Trader', traderInteract);
+  const B = Participant('OffTaker', offTakerInteract);
   const V = View('Main', { price: UInt });
   init();
 
-  S.only(() => { const price = declassify(interact.price); });
-  S.publish(price);
-  S.interact.reportReady(price);
+  S.only(() => {
+    const { property, price } = declassify(interact.getPropertyInfo());
+  });
+  S.publish(property, price);
+  S.interact.reportReady(property, price);
   V.price.set(price);
   commit();
 
-  B.only(() => { const willBuy = declassify(interact.confirmPurchase(price)); });
+  B.only(() => { const willBuy = declassify(interact.confirmPurchase(property, price)); });
   B.publish(willBuy);
   if (!willBuy) {
     commit();
@@ -44,15 +50,10 @@ export const main = Reach.App(() => {
 
   B.pay(price);
   each([S, B], () => interact.reportPayment(price));
-  commit();
-
-  S.only(() => { const property = declassify(interact.property); });
-  S.publish(property);
   transfer(price).to(S);
   commit();
 
   each([S, B], () => interact.reportTransfer(price));
-  B.interact.reportproperty(property);
+  B.interact.reportProperty(property);
   exit();
-
 });
