@@ -10,7 +10,7 @@ clone the repo [here](https://github.com/Ajioz/maketPlace-_dAPP.git)
 cd into the `marketPlace` directory and run the following command:
 `npm install`
 
-for further intrsuction on running reach dApp refer to the document @ 
+for further instruction on running reach dApp refer to the document @ 
 [Reach Docs](https://docs.reach.sh/quickstart/#quickstart) to setup your device to run this application using the command
 
 ```shell
