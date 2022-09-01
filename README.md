@@ -19,6 +19,9 @@ $ ./reach react
 
 ### Demo video can be found below
 
-[Demo](https://clipchamp.com/watch/36KmjuzeNFO)
+[Demo](https://www.youtube.com/watch?v=Io6M8uMwV-Q)
 
-### Have fun with it and Happy hacking!
+### Developer
+[Ajiroghene Sunny](https://github.com/Ajioz)
+
+### Have fun & Happy hacking!
