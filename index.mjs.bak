@@ -61,7 +61,7 @@ if (role === 'trader') {
   const offTakerInteract = {
     ...commonInteract(role),
     reportproperty: (property) => console.log(`Your product is "${property}"`),
-    confirmPurchase: async (price) => await ask.ask(`Inerested to deal ${toSU(price)} ${suStr}?`, ask.yesno),
+    confirmPurchase: async (price) => await ask.ask(`Interested to deal ${toSU(price)} ${suStr}?`, ask.yesno),
   };
 
   const acc = await stdlib.newTestAccount(iBalance);
@@ -76,5 +76,3 @@ if (role === 'trader') {
 };
 
 ask.done();
-
-// https://youtu.be/lNHU0pkzgK4
