@@ -1,7 +1,6 @@
 # Market Place
 
-A DApp to Showcase your goods and attract buyers.  A minimalistic concept that describes how we could trade real stock and real product using block chain
-
+A DApp to Showcase your goods and attract buyers. A minimalistic concept that describes how we could trade real stock and real products using blockchain.
 
 ## Setup
 
