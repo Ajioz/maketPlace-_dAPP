@@ -11,7 +11,9 @@ cd into the `marketPlace` directory and run the following command:
 `npm install`
 
 for further instruction on running reach dApp refer to the document @ 
-[Reach Docs](https://docs.reach.sh/quickstart/#quickstart) to setup your device to run this application using the command
+[Reach Docs](https://docs.reach.sh/quickstart/#quickstart) 
+
+To setup your device in other to run this app use the command as below.
 
 ```shell
 $ ./reach react
